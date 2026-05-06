@@ -41,7 +41,7 @@ const CommentSection = () => {
 
   const handleLike = async (id) => {
     try {
-      await axios.post(`/api/comments/${id}/like`)
+      await axios.post(`${API_URL}/api/comments/${id}/like`)  // ← FIXED
       if (socket) socket.emit('like_comment', { comment_id: id })
       fetchComments()
     } catch (error) {
@@ -53,7 +53,7 @@ const CommentSection = () => {
     e.preventDefault()
     if (!newComment.user_name || !newComment.content) return
     try {
-      await axios.post('/api/comments', newComment)
+      await axios.post(`${API_URL}/api/comments`, newComment)  // ← FIXED
       if (socket) socket.emit('new_comment', newComment)
       setNewComment({ user_name: '', rating: 5, content: '', parent_id: null })
       setReplyingTo(null)
@@ -249,7 +249,7 @@ const CommentSection = () => {
           border-radius: 50%;
           display: flex;
           align-items: center;
-          justify-content: center;
+          justifyContent: center;
           color: white;
           font-weight: bold;
           font-size: 1.2rem;
