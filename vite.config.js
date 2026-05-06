@@ -26,7 +26,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false
-    // minify removed - Vite will use esbuild (built-in)
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000  // ← Removes the warning
   }
 })
