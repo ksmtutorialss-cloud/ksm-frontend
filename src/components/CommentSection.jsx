@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { FaHeart, FaRegHeart, FaStar, FaRegStar, FaReply, FaTimes } from 'react-icons/fa'
 import axios from 'axios'
+import { API_URL } from '../config'
 import { useSocket } from '../contexts/SocketContext'
 
 const CommentSection = () => {
