@@ -1,0 +1,553 @@
+:root {
+  --citsa-navy: #0a192f;
+  --citsa-navy-light: #112240;
+  --citsa-navy-lighter: #1a365d;
+  --citsa-gold: #f5a623;
+  --citsa-gold-dark: #e69500;
+  --white: #ffffff;
+  --gray-light: #f8f9fa;
+  --gray: #e2e8f0;
+  --gray-dark: #4a5568;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  --citsa-navy: #0a192f;
+  --citsa-navy-light: #112240;
+  --citsa-navy-lighter: #1a365d;
+  --citsa-gold: #f5a623;
+  --citsa-gold-dark: #e69500;
+  --white: #1e293b;
+  --gray-light: #0f172a;
+  --gray: #334155;
+  --gray-dark: #94a3b8;
+  --text-dark: #f1f5f9;
+  --text-light: #94a3b8;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: var(--gray-light);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark mode body */
+body.dark {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--citsa-gold), var(--citsa-gold-dark));
+  border: none;
+  padding: 12px 28px;
+  border-radius: 40px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--citsa-gold);
+  padding: 10px 24px;
+  border-radius: 40px;
+  color: var(--citsa-gold);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--citsa-gold);
+  color: white;
+}
+
+/* Section Titles */
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--citsa-navy);
+}
+
+.dark .section-title {
+  color: white;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-underline {
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--citsa-gold);
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/* Skeleton Loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--gray) 25%, var(--gray-light) 50%, var(--gray) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--citsa-gold);
+  border-radius: 4px;
+}
+
+/* Registration Closed */
+.registration-closed {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+.closed-card {
+  background: var(--white);
+  border-radius: 30px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.closed-card h2 {
+  color: var(--error);
+  margin-bottom: 1rem;
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.toast {
+  background: var(--white);
+  color: var(--text-dark);
+  padding: 12px 24px;
+  border-radius: 12px;
+  margin-top: 10px;
+  box-shadow: var(--shadow-lg);
+  border-left: 4px solid;
+  animation: slideIn 0.3s ease;
+}
+
+.toast.success { border-left-color: var(--success); }
+.toast.error { border-left-color: var(--error); }
+.toast.info { border-left-color: var(--citsa-gold); }
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* HTML smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   COMPLETE DARK MODE FIXES FOR ALL COMPONENTS
+   ============================================ */
+
+/* Dark mode for all card backgrounds */
+body.dark .form-card,
+body.dark .dashboard-card,
+body.dark .portal-card,
+body.dark .success-card,
+body.dark .closed-card,
+body.dark .message-card,
+body.dark .deadline-card,
+body.dark .course-card,
+body.dark .tutor-card,
+body.dark .announcement-card,
+body.dark .comment-item,
+body.dark .comment-form-container,
+body.dark .info-card,
+body.dark .edit-form,
+body.dark .new-ticket-form,
+body.dark .tickets-list,
+body.dark .security-card,
+body.dark .contact-card,
+body.dark .summary-box {
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+/* Dark mode for input fields */
+body.dark input,
+body.dark textarea,
+body.dark select,
+body.dark .form-group input,
+body.dark .form-group select,
+body.dark .form-group textarea,
+body.dark .password-input-wrapper input,
+body.dark .search-box input {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Dark mode input placeholder */
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Dark mode for table backgrounds */
+body.dark table,
+body.dark .data-table,
+body.dark .students-table,
+body.dark .courses-table {
+  background: transparent;
+}
+
+body.dark th {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark td {
+  background: var(--white);
+  color: var(--text-dark);
+  border-color: #334155;
+}
+
+/* Dark mode for buttons */
+body.dark button:not(.btn-primary):not(.btn-secondary):not(.hero-btn-primary):not(.hero-btn-secondary) {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+
+body.dark button:hover:not(.btn-primary):not(.btn-secondary) {
+  background: #334155;
+}
+
+/* Dark mode for modal backgrounds */
+body.dark .modal-content,
+body.dark [style*="background: white"] {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* Dark mode for success card */
+body.dark .success-card .success-details {
+  background: #0f172a;
+}
+
+/* Dark mode for navigation */
+body.dark .navbar {
+  background: rgba(10, 25, 47, 0.98) !important;
+}
+
+/* Dark mode for footer */
+body.dark .footer {
+  background: #0a192f;
+}
+
+/* Dark mode for hero section */
+body.dark .hero {
+  background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+}
+
+/* Dark mode for stats cards */
+body.dark .stat-card {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark .stat-number {
+  color: white;
+}
+
+/* Dark mode for FAQ */
+body.dark .faq-item {
+  background: var(--white);
+  border-color: #334155;
+}
+
+body.dark .faq-question {
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+body.dark .faq-answer {
+  background: #0f172a;
+}
+
+/* Dark mode for comments */
+body.dark .comment-item {
+  background: var(--white);
+}
+
+body.dark .comment-user {
+  color: var(--citsa-gold);
+}
+
+/* Dark mode for deadline features */
+body.dark .feature {
+  color: #cbd5e1;
+  border-bottom-color: #334155;
+}
+
+/* Dark mode for admin panel sidebar */
+body.dark .admin-sidebar,
+body.dark [style*="background: linear-gradient"] {
+  background: linear-gradient(180deg, #0a192f 0%, #0d2137 100%) !important;
+}
+
+/* Dark mode for admin main content */
+body.dark .admin-main,
+body.dark [style*="background: #f0f2f5"] {
+  background: #0f172a !important;
+}
+
+/* Dark mode for admin cards */
+body.dark .admin-stat-card,
+body.dark [style*="background: white"][style*="box-shadow"],
+body.dark .dashboard-stats > div {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* Dark mode for admin tables */
+body.dark .admin-table th {
+  background: #1e293b;
+}
+
+body.dark .admin-table td {
+  background: var(--white);
+}
+
+/* Dark mode for alerts and messages */
+body.dark .error-alert,
+body.dark .error-message {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+body.dark .success-message,
+body.dark .info-message {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+body.dark .warning-message {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+/* Dark mode for tabs */
+body.dark .tab-btn {
+  color: #94a3b8;
+}
+
+body.dark .tab-btn.active {
+  background: #f5a623;
+  color: white;
+}
+
+body.dark .tab-btn:hover:not(.active) {
+  background: rgba(245, 166, 35, 0.1);
+  color: #f5a623;
+}
+
+/* Dark mode for portal tabs */
+body.dark .portal-tabs {
+  border-bottom-color: #334155;
+}
+
+/* Dark mode for ticket items */
+body.dark .ticket-item {
+  background: #0f172a;
+}
+
+body.dark .ticket-message,
+body.dark .ticket-reply {
+  background: #1e293b;
+}
+
+/* Security Tab Styles */
+.security-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.security-card {
+  background: var(--gray-light);
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+
+body.dark .security-card {
+  background: var(--citsa-navy-light);
+}
+
+.security-card h3 {
+  color: var(--citsa-gold);
+  margin-bottom: 1rem;
+}
+
+.security-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.security-form .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.security-form .form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--gray);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+body.dark .security-form .form-group input {
+  background: var(--citsa-navy);
+  border-color: #334155;
+  color: white;
+}
+
+.change-password-btn {
+  background: var(--citsa-gold);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 40px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 1rem;
+  transition: all 0.3s;
+}
+
+.change-password-btn:hover {
+  transform: translateY(-2px);
+  background: var(--citsa-gold-dark);
+}
+
+.security-note {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: var(--warning);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: white;
+}
+
+/* Mobile menu improvements */
+@media (max-width: 968px) {
+  .mobile-menu {
+    box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+  }
+  
+  body.dark .mobile-menu {
+    background: #0a192f;
+  }
+}
+
+/* Fix for admin panel input focus issue - prevent re-renders */
+.admin-search-input,
+.admin-filter-select {
+  will-change: transform;
+}
+
+/* Ensure smooth transitions for all themed elements */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
