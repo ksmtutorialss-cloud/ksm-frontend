@@ -30,7 +30,7 @@ const CommentSection = () => {
   const fetchComments = async () => {
     setLoading(true)
     try {
-      const response = await axios.get('/api/comments')
+      const response = await axios.get(`${API_URL}/api/comments`)
       setComments(response.data)
     } catch (error) {
       console.error('Error fetching comments:', error)
