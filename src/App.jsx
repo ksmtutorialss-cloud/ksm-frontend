@@ -20,7 +20,7 @@ import BackToHome from './components/BackToHome'
 import { useSocket } from './contexts/SocketContext'
 import axios from 'axios'
 import { API_URL } from './config'
-import './App.css'
+/*import './App.css'*/
 
 function App() {
   const [registrationClosed, setRegistrationClosed] = useState(false)
