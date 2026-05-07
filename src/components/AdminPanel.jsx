@@ -892,6 +892,7 @@ const AdminPanel = () => {
         </div>
       </div>
 
+        
       <div style={{ flex: 1, marginLeft: sidebarOpen ? '280px' : '80px', transition: 'margin-left 0.3s ease', width: sidebarOpen ? 'calc(100% - 280px)' : 'calc(100% - 80px)' }}>
         <div style={{ background: 'white', padding: '20px 30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
           <h1 style={{ fontSize: '1.5rem', fontWeight: '600', margin: 0 }}>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</h1>
