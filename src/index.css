@@ -2691,6 +2691,124 @@ body:not(.dark) table span,
 body:not(.dark) table strong {
   color: #1e293b !important;
 }
+
+
+
+/* ============================================
+   DARK MODE FIXES FOR ADMIN PANEL STATUS BADGES
+   ============================================ */
+
+/* Fix payment status badges in certificates and students tables */
+body.dark .status-badge.paid,
+body.dark .status-badge.pending,
+body.dark td span[style*="background: #e8f5e9"],
+body.dark td span[style*="background: #fff3e0"],
+body.dark .admin-table span[style*="background: #e8f5e9"],
+body.dark .admin-table span[style*="background: #fff3e0"],
+body.dark table span[style*="background: #e8f5e9"],
+body.dark table span[style*="background: #fff3e0"] {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* Force specific colors for payment status in dark mode */
+body.dark td span[style*="background: #e8f5e9"],
+body.dark .status-badge.paid {
+  color: #34d399 !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+  padding: 4px 8px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+body.dark td span[style*="background: #fff3e0"],
+body.dark .status-badge.pending {
+  color: #fbbf24 !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+  padding: 4px 8px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Fix edit request status badges */
+body.dark .edit-requests-table span[style*="background: #fff3e0"],
+body.dark .edit-requests-table span[style*="background: #e8f5e9"],
+body.dark .edit-requests-table span[style*="background: #ffebee"],
+body.dark table span[style*="background: #fff3e0"],
+body.dark table span[style*="background: #e8f5e9"],
+body.dark table span[style*="background: #ffebee"] {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+body.dark .edit-requests-table span,
+body.dark table td span[style*="background: #fff3e0"] {
+  color: #fbbf24 !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+body.dark .edit-requests-table span[style*="background: #e8f5e9"] {
+  color: #34d399 !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+body.dark .edit-requests-table span[style*="background: #ffebee"] {
+  color: #f87171 !important;
+  background: rgba(239, 68, 68, 0.15) !important;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+/* Fix modal in edit request details - dark mode */
+body.dark .modal-content .bg-light,
+body.dark .modal-content [style*="background: #f8f9fa"],
+body.dark .modal-content [style*="background: #fff3e0"],
+body.dark .modal-content [style*="background: #e8f5e9"],
+body.dark .modal-content [style*="background: #f8f9fa"] *,
+body.dark .modal-content [style*="background: #fff3e0"] *,
+body.dark .modal-content [style*="background: #e8f5e9"] * {
+  background: #0f172a !important;
+  color: #f1f5f9 !important;
+}
+
+/* Ensure text inside modal is visible */
+body.dark .modal-content,
+body.dark .modal-content * {
+  color: #f1f5f9 !important;
+}
+
+body.dark .modal-content h4 {
+  color: #f5a623 !important;
+}
+
+body.dark .modal-content .signature,
+body.dark .modal-content strong {
+  color: #f1f5f9 !important;
+}
+
+/* Fix for the "View Changes" button and modal content */
+body.dark .modal-content .current-data,
+body.dark .modal-content .requested-changes,
+body.dark .modal-content .summary-box {
+  background: #0f172a !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .modal-content ul li {
+  color: #f1f5f9 !important;
+}
+
+body.dark .modal-content ul li span[style*="text-decoration: line-through"] {
+  color: #f87171 !important;
+}
+
+body.dark .modal-content ul li span[style*="color: #2e7d32"] {
+  color: #34d399 !important;
+}
 /* ========== SMOOTH TRANSITIONS ========== */
 * {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
