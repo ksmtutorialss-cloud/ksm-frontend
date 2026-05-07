@@ -289,7 +289,11 @@ const RegistrationForm = ({ onBack, deadline }) => {
               <h3>Join Our WhatsApp Group!</h3>
               <p>A WhatsApp group invite link has been sent to <strong>{formData.phone}</strong></p>
               <p className="warning">⚠️ ALL tutorial dates and venues will be announced in the WhatsApp group only!</p>
-              <button className="whatsapp-btn" onClick={joinWhatsApp}>
+              <button 
+                className="whatsapp-btn" 
+                onClick={joinWhatsApp}
+                style={{ color: '#000000', background: 'white' }}
+              >
                 Join WhatsApp Group →
               </button>
             </div>
