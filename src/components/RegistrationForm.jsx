@@ -327,9 +327,13 @@ const RegistrationForm = ({ onBack, deadline }) => {
             border: none;
             padding: 10px 24px;
             border-radius: 40px;
-            color: #25D366;
+            color: #000000 !important;
             font-weight: bold;
             cursor: pointer;
+          }
+          body.dark .whatsapp-btn {
+            color: #000000 !important;
+            background: #ffffff;
           }
           .whatsapp-btn:hover { transform: scale(1.05); }
           .back-home {
