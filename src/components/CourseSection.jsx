@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { FaCode, FaLaptopCode, FaDatabase, FaNetworkWired, FaCloud, FaShieldAlt, FaMobileAlt, FaBrain, FaLinux, FaChartBar, FaBook } from 'react-icons/fa'
+import { FaCode, FaLaptopCode, FaDatabase, FaNetworkWired, FaCloud, FaShieldAlt, FaMobileAlt, FaBrain, FaLinux, FaChartBar, FaBook, FaSpinner } from 'react-icons/fa'
 import axios from 'axios'
 import { API_URL } from '../config'
 
@@ -59,20 +59,6 @@ const CourseSection = ({ onRegister }) => {
     }
   }
 
-  if (loading) {
-    return (
-      <section className="courses" id="courses">
-        <div className="container">
-          <h2 className="section-title">Explore Our Courses</h2>
-          <p className="section-subtitle">Choose your level and start your journey to straight A's</p>
-          <div className="courses-grid">
-            {[1, 2, 3, 4].map(i => <div key={i} className="skeleton" style={{ height: '280px', borderRadius: '20px' }}></div>)}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
   return (
     <section className="courses" id="courses">
       <div className="container">
@@ -91,8 +77,19 @@ const CourseSection = ({ onRegister }) => {
           ))}
         </div>
 
-        <div className="courses-grid">
-          {courses.map((course, index) => (
+        <div className="courses-grid" style={{ position: 'relative', minHeight: '300px' }}>
+          {/* Loading Overlay */}
+          {loading && (
+            <div className="loading-overlay">
+              <div className="loading-spinner">
+                <FaSpinner className="spinning" />
+                <span>Loading courses...</span>
+              </div>
+            </div>
+          )}
+
+          {/* Courses Grid */}
+          {!loading && courses.map((course, index) => (
             <div key={index} className="course-card">
               <div className="course-level-badge">Level {course.level}</div>
               <div className="course-icon">{getCourseIconByName(course.icon || 'FaCode')}</div>
@@ -105,6 +102,12 @@ const CourseSection = ({ onRegister }) => {
               </div>
             </div>
           ))}
+
+          {!loading && courses.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '50px', color: '#999' }}>
+              No courses available for this level.
+            </div>
+          )}
         </div>
       </div>
 
@@ -151,7 +154,52 @@ const CourseSection = ({ onRegister }) => {
           box-shadow: 0 0 0 2px rgba(245, 166, 35, 0.5), 0 8px 20px rgba(245, 166, 35, 0.5);
           text-shadow: 0 1px 0 rgba(255,255,255,0.3);
         }
-        .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+        .courses-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 2rem;
+          position: relative;
+          min-height: 300px;
+        }
+        .loading-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(2px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+          border-radius: 20px;
+        }
+        body.dark .loading-overlay {
+          background: rgba(0, 0, 0, 0.7);
+        }
+        .loading-spinner {
+          background: white;
+          padding: 15px 25px;
+          border-radius: 50px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-weight: 500;
+        }
+        body.dark .loading-spinner {
+          background: #1e293b;
+          color: #f1f5f9;
+        }
+        .spinning {
+          animation: spin 1s linear infinite;
+          font-size: 1.3rem;
+          color: var(--citsa-gold);
+        }
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
         .course-card {
           background: var(--white);
           border-radius: 20px;
