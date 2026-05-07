@@ -35,7 +35,7 @@ const RegistrationForm = ({ onBack, deadline }) => {
     courses: ''
   })
 
-  // Fetch WhatsApp link when component mounts (for the success page)
+  // Fetch WhatsApp link from settings
   useEffect(() => {
     axios.get(`${API_URL}/api/settings`)
       .then(res => {
@@ -234,12 +234,10 @@ const RegistrationForm = ({ onBack, deadline }) => {
 
   const totalAmount = formData.courses.length * 120
 
-  // Use the fetched whatsappLink in the success page
   const joinWhatsApp = () => {
     if (whatsappLink) {
       window.open(whatsappLink, '_blank')
     } else {
-      // Fallback: try to fetch again or show alert
       axios.get(`${API_URL}/api/settings`).then(res => {
         if (res.data.whatsapp_link) {
           window.open(res.data.whatsapp_link, '_blank')
@@ -345,11 +343,20 @@ const RegistrationForm = ({ onBack, deadline }) => {
             background: linear-gradient(135deg, #25D366, #128C7E);
             padding: 1.5rem;
             border-radius: 20px;
-            color: white;
             margin: 1.5rem 0;
+            color: #1a1a1a !important;
+          }
+          .whatsapp-box * {
+            color: #1a1a1a !important;
           }
           .whatsapp-icon { font-size: 3rem; margin-bottom: 0.5rem; }
-          .warning { font-size: 0.8rem; margin: 1rem 0; background: rgba(0,0,0,0.1); padding: 8px; border-radius: 8px; }
+          .warning {
+            font-size: 0.8rem;
+            margin: 1rem 0;
+            background: rgba(0,0,0,0.1);
+            padding: 8px;
+            border-radius: 8px;
+          }
           .whatsapp-btn {
             background: white;
             border: none;
@@ -359,11 +366,17 @@ const RegistrationForm = ({ onBack, deadline }) => {
             font-weight: bold;
             cursor: pointer;
           }
+          .whatsapp-btn:hover { transform: scale(1.05); }
+          body.dark .whatsapp-box {
+            color: #f1f5f9 !important;
+          }
+          body.dark .whatsapp-box * {
+            color: #f1f5f9 !important;
+          }
           body.dark .whatsapp-btn {
             color: #000000 !important;
             background: #ffffff;
           }
-          .whatsapp-btn:hover { transform: scale(1.05); }
           .back-home {
             background: transparent;
             border: 2px solid #f5a623;
@@ -402,7 +415,6 @@ const RegistrationForm = ({ onBack, deadline }) => {
           {error && <div className="error-alert">{error}</div>}
 
           <form onSubmit={handleSubmit}>
-            {/* ... rest of the form steps unchanged ... */}
             {step === 1 && (
               <div className="form-step">
                 <h2>Welcome to KSM Tutorials</h2>
