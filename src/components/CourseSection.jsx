@@ -97,7 +97,7 @@ const CourseSection = ({ onRegister }) => {
               <div className="course-level-badge">Level {course.level}</div>
               <div className="course-icon">{getCourseIconByName(course.icon || 'FaCode')}</div>
               <h3 className="course-title">{course.name}</h3>
-              <div className="course-instructor">👨‍🏫 {course.instructor}</div>
+              <div className="course-instructor"> {course.instructor}</div>
               <p className="course-description">{course.description || 'Comprehensive course covering all essential topics for this subject area.'}</p>
               <div className="course-footer">
                 <div className="course-price">💰 GHS {course.price}</div>
