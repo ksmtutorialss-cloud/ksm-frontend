@@ -1319,3 +1319,207 @@ body.dark .security-form .form-group input {
   text-align: center;
   color: white;
 }
+/* ============================================
+   ADDITIONAL DARK MODE FIXES FOR COMPONENTS
+   ============================================ */
+
+/* Fix for admin panel sidebar */
+body.dark [style*="background: linear-gradient(180deg, #0a192f"] {
+  background: linear-gradient(180deg, #0a192f 0%, #0d2137 100%) !important;
+}
+
+/* Fix for admin main content */
+body.dark [style*="background: #f0f2f5"] {
+  background: #0f172a !important;
+}
+
+/* Fix for admin stat cards */
+body.dark .admin-stat-card,
+body.dark [style*="background: white"][style*="box-shadow"] {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* Fix for login page */
+body.dark .admin-login-page {
+  background: linear-gradient(135deg, #0a192f, #112240);
+}
+
+/* Fix for registration page */
+body.dark .registration-page {
+  background: linear-gradient(135deg, #0a192f, #112240);
+}
+
+/* Fix for student portal */
+body.dark .student-portal,
+body.dark .student-portal-dashboard {
+  background: linear-gradient(135deg, #0a192f, #112240);
+}
+
+/* Fix for success page */
+body.dark .success-page {
+  background: linear-gradient(135deg, #0a192f, #112240);
+}
+
+/* Fix for all step indicators in dark mode */
+body.dark .step-indicators span {
+  color: #94a3b8;
+}
+
+body.dark .step-indicators span.active {
+  color: var(--citsa-gold);
+}
+
+/* Fix for progress bar */
+body.dark .progress-bar {
+  background: #334155;
+}
+
+/* Fix for summary box */
+body.dark .summary-box {
+  background: #0f172a;
+}
+
+/* Fix for info box */
+body.dark .info-box {
+  background: #0f172a;
+}
+
+/* Fix for deadline notice */
+body.dark .deadline-notice {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+/* Fix for course options */
+body.dark .course-option {
+  border-color: #334155;
+}
+
+body.dark .course-option:hover {
+  border-color: var(--citsa-gold);
+  background: rgba(245, 166, 35, 0.1);
+}
+
+body.dark .course-option.selected {
+  border-color: var(--citsa-gold);
+  background: rgba(245, 166, 35, 0.15);
+}
+
+/* Fix for total amount */
+body.dark .total-amount {
+  border-top-color: #334155;
+  color: var(--citsa-gold);
+}
+
+/* Fix for agreement checkbox */
+body.dark .agreement {
+  color: var(--text-dark);
+}
+
+/* Fix for back button */
+body.dark .btn-back {
+  background: #334155;
+  color: white;
+}
+
+/* Fix for table headers in admin panel */
+body.dark .admin-table th {
+  background: #1e293b;
+}
+
+body.dark .admin-table td {
+  background: var(--white);
+}
+
+/* Mobile specific fixes */
+@media (max-width: 768px) {
+  body.dark .countdown-item {
+    background: var(--citsa-navy-lighter);
+  }
+  
+  body.dark .comment-item {
+    background: var(--white);
+  }
+  
+  body.dark .ticket-item {
+    background: #0f172a;
+  }
+  
+  /* Ensure proper contrast on mobile */
+  body.dark .navbar {
+    background: rgba(10, 25, 47, 0.98) !important;
+  }
+  
+  /* Fix for mobile menu */
+  body.dark .mobile-menu {
+    background: #0a192f;
+  }
+  
+  body.dark .mobile-menu a {
+    color: #e2e8f0;
+  }
+  
+  body.dark .mobile-menu a:hover {
+    background: #112240;
+  }
+}
+
+/* Ensure proper contrast for all text in dark mode */
+body.dark p,
+body.dark li,
+body.dark span:not(.badge):not(.countdown-item span) {
+  color: var(--text-dark);
+}
+
+/* Fix for specific elements */
+body.dark .hero-description,
+body.dark .course-description,
+body.dark .tutor-experience,
+body.dark .announcement-date,
+body.dark .comment-date,
+body.dark .ticket-date {
+  color: #94a3b8;
+}
+
+body.dark .stat p {
+  color: #94a3b8;
+}
+
+body.dark .feature {
+  color: #cbd5e1;
+}
+
+body.dark .footer-section p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Fix for modal close button */
+body.dark .modal-content button[onClick] {
+  color: #e2e8f0;
+}
+
+body.dark .modal-content button[onClick]:hover {
+  color: white;
+}
+
+/* Fix for dropdown selects */
+body.dark select option {
+  background: #1e293b;
+  color: white;
+}
+
+/* Fix for radio and checkbox */
+body.dark input[type="checkbox"],
+body.dark input[type="radio"] {
+  accent-color: var(--citsa-gold);
+}
+
+/* Fix for links */
+body.dark a:not(.btn-primary):not(.btn-secondary):not(.partner-logo) {
+  color: var(--citsa-gold);
+}
+
+body.dark a:hover:not(.btn-primary):not(.btn-secondary) {
+  color: var(--citsa-gold-dark);
+}
