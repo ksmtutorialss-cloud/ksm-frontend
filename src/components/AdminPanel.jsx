@@ -107,18 +107,7 @@ const AdminPanel = () => {
     setVisitedTabs({})
   }, [stats.openTickets, stats.pendingEditRequests, stats.totalComments])
 
-  const instructorOptions = [
-    "Dr. Mensah",
-    "Prof. Abena",
-    "Dr. Esi",
-    "Prof. Kwame",
-    "Dr. Grace",
-    "Mr. Yaw",
-    "Dr. Owusu",
-    "Prof. Atta",
-    "Mr. Danso",
-    "Prof. Adwoa"
-  ]
+  const [tutorNames, setTutorNames] = useState([]);
 
   const courseIconOptions = [
     { name: 'FaCode', icon: <FaCode />, label: 'Code/Programming' },
@@ -285,6 +274,7 @@ const AdminPanel = () => {
       setCourses(coursesRes.data || [])
       setComments(commentsRes.data || [])
       setTutors(tutorsRes.data || [])
+      setTutorNames((tutorsRes.data || []).map(t => t.name));
       setAnnouncements(announcementsRes.data || [])
       setPartners(partnersRes.data || [])
       setTickets(ticketsRes.data || [])
@@ -1389,9 +1379,18 @@ const AdminPanel = () => {
           </div>
           <div className="form-group" style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', marginBottom: '5px', fontWeight: '600' }}>Instructor *</label>
+            
             <select value={newCourse.instructor} onChange={(e) => setNewCourse({...newCourse, instructor: e.target.value})} required style={{ width: '100%', padding: '10px', border: '1px solid #ddd', borderRadius: '8px' }}>
-              {instructorOptions.map(inst => (<option key={inst} value={inst}>{inst}</option>))}
+              {tutorNames.length === 0 ? (
+                <option>Loading instructors...</option>
+              ) : (
+                tutorNames.map(name => (
+                  <option key={name} value={name}>{name}</option>
+                ))
+              )}
             </select>
+
+            
           </div>
           <div className="form-group" style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', marginBottom: '5px', fontWeight: '600' }}>Venue</label>
@@ -1424,13 +1423,21 @@ const AdminPanel = () => {
             </div>
             <input type="text" placeholder="Course Name" value={editCourse.name} onChange={(e) => setEditCourse({...editCourse, name: e.target.value})} required style={{ width: '100%', padding: '10px', margin: '10px 0', border: '1px solid #ddd', borderRadius: '8px' }} />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
+              
               <select value={editCourse.level} onChange={(e) => setEditCourse({...editCourse, level: parseInt(e.target.value)})} style={{ width: '100%', padding: '10px', border: '1px solid #ddd', borderRadius: '8px' }}>
                 <option value={100}>Level 100</option><option value={200}>Level 200</option><option value={300}>Level 300</option><option value={400}>Level 400</option>
               </select>
+              
               <input type="number" placeholder="Price" value={editCourse.price} onChange={(e) => setEditCourse({...editCourse, price: parseFloat(e.target.value)})} style={{ width: '100%', padding: '10px', border: '1px solid #ddd', borderRadius: '8px' }} />
             </div>
             <select value={editCourse.instructor} onChange={(e) => setEditCourse({...editCourse, instructor: e.target.value})} style={{ width: '100%', padding: '10px', margin: '10px 0', border: '1px solid #ddd', borderRadius: '8px' }}>
-              {instructorOptions.map(inst => (<option key={inst} value={inst}>{inst}</option>))}
+              {tutorNames.length === 0 ? (
+                <option>Loading instructors...</option>
+              ) : (
+                tutorNames.map(name => (
+                  <option key={name} value={name}>{name}</option>
+                ))
+              )}
             </select>
             <textarea placeholder="Description" value={editCourse.description} onChange={(e) => setEditCourse({...editCourse, description: e.target.value})} rows="3" style={{ width: '100%', padding: '10px', margin: '10px 0', border: '1px solid #ddd', borderRadius: '8px' }}></textarea>
             <div style={{ display: 'flex', gap: '12px', marginTop: '20px', justifyContent: 'flex-end' }}>
