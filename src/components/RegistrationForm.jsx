@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaArrowLeft, FaArrowRight, FaCheckCircle, FaSpinner, FaEye, FaEyeSlash, FaEnvelope } from 'react-icons/fa'
 import axios from 'axios'
 import { API_URL } from '../config'
@@ -12,6 +12,7 @@ const RegistrationForm = ({ onBack, deadline }) => {
   const [registrationData, setRegistrationData] = useState(null)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [whatsappLink, setWhatsappLink] = useState('')
   const [formData, setFormData] = useState({
     full_name: '',
     student_id: '',
@@ -33,6 +34,17 @@ const RegistrationForm = ({ onBack, deadline }) => {
     confirm_password: '',
     courses: ''
   })
+
+  // Fetch WhatsApp link when component mounts (for the success page)
+  useEffect(() => {
+    axios.get(`${API_URL}/api/settings`)
+      .then(res => {
+        if (res.data.whatsapp_link) {
+          setWhatsappLink(res.data.whatsapp_link)
+        }
+      })
+      .catch(err => console.error('Error fetching WhatsApp link:', err))
+  }, [])
 
   const coursesByLevel = {
     100: ['Programming (C++)', 'Web Design', 'Database (MySQL)', 'Computer Fundamentals'],
@@ -222,6 +234,22 @@ const RegistrationForm = ({ onBack, deadline }) => {
 
   const totalAmount = formData.courses.length * 120
 
+  // Use the fetched whatsappLink in the success page
+  const joinWhatsApp = () => {
+    if (whatsappLink) {
+      window.open(whatsappLink, '_blank')
+    } else {
+      // Fallback: try to fetch again or show alert
+      axios.get(`${API_URL}/api/settings`).then(res => {
+        if (res.data.whatsapp_link) {
+          window.open(res.data.whatsapp_link, '_blank')
+        } else {
+          alert('WhatsApp link not available. Please check your email for the invite link.')
+        }
+      }).catch(() => alert('Unable to load WhatsApp link. Please check your email.'))
+    }
+  }
+
   if (submitted && registrationData) {
     return (
       <div className="success-page">
@@ -263,7 +291,7 @@ const RegistrationForm = ({ onBack, deadline }) => {
               <h3>Join Our WhatsApp Group!</h3>
               <p>A WhatsApp group invite link has been sent to <strong>{formData.phone}</strong></p>
               <p className="warning">⚠️ ALL tutorial dates and venues will be announced in the WhatsApp group only!</p>
-              <button className="whatsapp-btn" onClick={() => window.open('https://chat.whatsapp.com/KSM2026', '_blank')}>
+              <button className="whatsapp-btn" onClick={joinWhatsApp}>
                 Join WhatsApp Group →
               </button>
             </div>
@@ -374,6 +402,7 @@ const RegistrationForm = ({ onBack, deadline }) => {
           {error && <div className="error-alert">{error}</div>}
 
           <form onSubmit={handleSubmit}>
+            {/* ... rest of the form steps unchanged ... */}
             {step === 1 && (
               <div className="form-step">
                 <h2>Welcome to KSM Tutorials</h2>
