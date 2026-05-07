@@ -717,3 +717,179 @@ body.dark .comments {
 body.dark .faq {
   background: var(--citsa-navy);
 }
+
+
+
+
+
+/* ============================================
+   CRITICAL FIXES FOR TEXT VISIBILITY IN DARK MODE
+   ============================================ */
+
+/* Fix for all text elements in dark mode - ensure contrast */
+body.dark,
+body.dark * {
+  color-scheme: dark;
+}
+
+/* Fix for admin panel text visibility */
+body.dark .admin-panel,
+body.dark .main-content,
+body.dark .dashboard-stats div,
+body.dark .stat-card h3,
+body.dark .stat-card p,
+body.dark .stat-card span {
+  color: #f1f5f9 !important;
+}
+
+/* Fix for all cards in admin panel */
+body.dark .admin-stat-card,
+body.dark .dashboard-card,
+body.dark .info-card,
+body.dark .ticket-item,
+body.dark .comment-item {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* Fix for table text in admin panel */
+body.dark table,
+body.dark th,
+body.dark td,
+body.dark .data-table th,
+body.dark .data-table td,
+body.dark .admin-table th,
+body.dark .admin-table td {
+  color: #f1f5f9 !important;
+}
+
+body.dark th {
+  background: #0f172a !important;
+}
+
+body.dark td {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* Fix for student portal text */
+body.dark .student-portal-dashboard,
+body.dark .portal-card,
+body.dark .dashboard-card,
+body.dark .info-card,
+body.dark .ticket-item,
+body.dark .contact-card,
+body.dark .security-card {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .dashboard-card h2,
+body.dark .dashboard-card h3,
+body.dark .dashboard-card p,
+body.dark .info-card h3,
+body.dark .info-card div,
+body.dark .info-card strong,
+body.dark .ticket-item strong,
+body.dark .ticket-item p {
+  color: #f1f5f9 !important;
+}
+
+/* Fix for registration form in dark mode */
+body.dark .form-card,
+body.dark .summary-box,
+body.dark .info-box {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .form-card h2,
+body.dark .form-card p,
+body.dark .form-card label,
+body.dark .summary-box p,
+body.dark .info-box p,
+body.dark .info-box li {
+  color: #f1f5f9 !important;
+}
+
+/* Fix for all text in dark mode */
+body.dark .text-dark,
+body.dark .text-light,
+body.dark .gray-text,
+body.dark .muted-text,
+body.dark .info-text,
+body.dark .help-text,
+body.dark small,
+body.dark .small-text {
+  color: #cbd5e1 !important;
+}
+
+/* Fix for headings in dark mode */
+body.dark h1, body.dark h2, body.dark h3, 
+body.dark h4, body.dark h5, body.dark h6,
+body.dark .section-title {
+  color: #f1f5f9 !important;
+}
+
+/* Fix for strong/bold text */
+body.dark strong, body.dark b, body.dark .bold-text {
+  color: #f1f5f9 !important;
+}
+
+/* Fix for links in dark mode */
+body.dark a:not(.btn-primary):not(.btn-secondary) {
+  color: var(--citsa-gold) !important;
+}
+
+/* Fix for list items */
+body.dark li, body.dark .list-item {
+  color: #cbd5e1 !important;
+}
+
+/* Fix for status badges */
+body.dark .status-badge,
+body.dark .badge,
+body.dark .tag {
+  color: white !important;
+}
+
+/* Fix for payment status */
+body.dark .status-text.paid {
+  color: #34d399 !important;
+}
+
+body.dark .status-text.pending {
+  color: #fbbf24 !important;
+}
+
+/* Fix for input labels */
+body.dark label,
+body.dark .form-label {
+  color: #cbd5e1 !important;
+}
+
+/* Fix for dropdown options */
+body.dark select option {
+  background: #1e293b !important;
+  color: white !important;
+}
+
+/* Fix for placeholder text */
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Fix for disabled text */
+body.dark .disabled,
+body.dark [disabled],
+body.dark .text-muted {
+  color: #64748b !important;
+}
+
+/* Fix for borders in dark mode - make them visible */
+body.dark .border,
+body.dark hr,
+body.dark .divider {
+  border-color: #334155 !important;
+}
