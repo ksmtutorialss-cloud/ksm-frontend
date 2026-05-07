@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { FaUserShield, FaLock, FaSpinner, FaEye, FaEyeSlash } from 'react-icons/fa'
+import { FaUserShield, FaLock, FaSpinner, FaEye, FaEyeSlash, FaHome } from 'react-icons/fa'
 import { API_URL } from '../config'
 
 const AdminLogin = () => {
@@ -70,19 +70,15 @@ const AdminLogin = () => {
             </div>
             
             <button type="submit" disabled={loading}>
-              {loading ? <FaSpinner className="spinning" /> : 'Login'}
+              {loading ? <><FaSpinner className="spinning" /> Logging in...</> : 'Login'}
             </button>
           </form>
-          
-          <div className="login-info">
-            <p>Default: <strong>admin</strong> / <strong>admin123</strong></p>
-          </div>
         </div>
       </div>
 
-      {/* Simple back button at bottom */}
-      <button onClick={() => navigate('/')} className="back-home-link">
-        ← Back to Home
+      {/* Home button at bottom */}
+      <button onClick={() => navigate('/')} className="home-button">
+        <FaHome /> Back to Homepage
       </button>
 
       <style>{`
@@ -94,7 +90,6 @@ const AdminLogin = () => {
           align-items: center;
           justify-content: center;
           padding: 20px;
-          position: relative;
         }
         
         .login-container { 
@@ -148,6 +143,11 @@ const AdminLogin = () => {
           border-radius: 10px; 
           margin: 1rem 0;
           font-size: 0.85rem;
+        }
+        
+        body.dark .error-message {
+          background: rgba(239, 68, 68, 0.2);
+          color: #f87171;
         }
         
         .input-group { 
@@ -232,36 +232,27 @@ const AdminLogin = () => {
           to { transform: rotate(360deg); } 
         }
         
-        .login-info { 
-          margin-top: 1.5rem; 
-          padding-top: 1rem; 
-          border-top: 1px solid #e2e8f0; 
-          font-size: 0.75rem;
-        }
-        
-        body.dark .login-info {
-          border-top-color: #334155;
-        }
-        
-        .login-info strong {
-          color: #f5a623;
-        }
-        
-        .back-home-link {
-          margin-top: 20px;
-          background: transparent;
-          border: none;
+        .home-button {
+          margin-top: 24px;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 12px 24px;
+          border-radius: 40px;
           color: white;
+          font-weight: 500;
           cursor: pointer;
-          font-size: 0.85rem;
-          padding: 8px 16px;
-          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
           transition: all 0.3s;
           width: auto;
+          font-size: 0.9rem;
         }
         
-        .back-home-link:hover {
-          background: rgba(255,255,255,0.1);
+        .home-button:hover {
+          background: rgba(255, 255, 255, 0.2);
+          transform: translateY(-2px);
         }
         
         @media (max-width: 480px) { 
@@ -270,6 +261,10 @@ const AdminLogin = () => {
           }
           .login-card h1 {
             font-size: 1.4rem;
+          }
+          .home-button {
+            padding: 10px 20px;
+            font-size: 0.85rem;
           }
         }
       `}</style>
