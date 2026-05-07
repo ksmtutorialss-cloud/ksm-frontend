@@ -44,9 +44,7 @@ body {
   }
 }
 
-/* ============================================
-   BUTTONS
-   ============================================ */
+/* ========== BUTTONS ========== */
 .btn-primary {
   background: linear-gradient(135deg, var(--citsa-gold), var(--citsa-gold-dark));
   border: none;
@@ -79,9 +77,7 @@ body {
   color: white;
 }
 
-/* ============================================
-   SECTION TITLES
-   ============================================ */
+/* ========== SECTION TITLES ========== */
 .section-title {
   text-align: center;
   font-size: 1.8rem;
@@ -110,34 +106,9 @@ body {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 16px;
 }
 
-@media (min-width: 768px) {
-  .section-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 3rem;
-  }
-}
-
-/* ============================================
-   LOADING SKELETON
-   ============================================ */
-.skeleton {
-  background: linear-gradient(90deg, var(--gray) 25%, var(--gray-light) 50%, var(--gray) 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-  border-radius: 8px;
-}
-
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* ============================================
-   SCROLLBAR
-   ============================================ */
+/* ========== SCROLLBAR ========== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -151,9 +122,7 @@ body {
   border-radius: 4px;
 }
 
-/* ============================================
-   TOAST NOTIFICATIONS
-   ============================================ */
+/* ========== TOAST ========== */
 .toast-container {
   position: fixed;
   bottom: 20px;
@@ -177,38 +146,24 @@ body {
 .toast.info { border-left-color: var(--citsa-gold); }
 
 @keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-/* ============================================
-   RESPONSIVE UTILITIES
-   ============================================ */
-button, 
-.btn-primary, 
-.btn-secondary {
-  min-height: 44px;
-  min-width: 44px;
-  cursor: pointer;
+/* ========== LOADING SKELETON ========== */
+.skeleton {
+  background: linear-gradient(90deg, var(--gray) 25%, var(--gray-light) 50%, var(--gray) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
 }
 
-@media (max-width: 768px) {
-  button, 
-  .btn-primary, 
-  .btn-secondary {
-    padding: 10px 16px;
-  }
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
-/* ============================================
-   HERO SECTION
-   ============================================ */
+/* ========== HERO SECTION ========== */
 .hero {
   min-height: 100vh;
   padding-top: 80px;
@@ -406,9 +361,7 @@ button,
   border-bottom: 1px dashed var(--gray);
 }
 
-/* ============================================
-   COURSES SECTION
-   ============================================ */
+/* ========== COURSES SECTION ========== */
 .courses {
   padding: 60px 0;
   background: white;
@@ -539,9 +492,7 @@ button,
   color: white;
 }
 
-/* ============================================
-   TUTORS SECTION
-   ============================================ */
+/* ========== TUTORS SECTION ========== */
 .meet-tutors {
   padding: 60px 0;
   background: var(--gray-light);
@@ -637,9 +588,7 @@ button,
   color: var(--citsa-gold);
 }
 
-/* ============================================
-   COMMENTS SECTION
-   ============================================ */
+/* ========== COMMENTS SECTION ========== */
 .comments {
   padding: 60px 0;
   background: white;
@@ -787,9 +736,7 @@ button,
   cursor: pointer;
 }
 
-/* ============================================
-   FAQ SECTION
-   ============================================ */
+/* ========== FAQ SECTION ========== */
 .faq {
   padding: 60px 0;
   background: var(--gray-light);
@@ -825,9 +772,7 @@ button,
   border-top: 1px solid var(--gray);
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
+/* ========== FOOTER ========== */
 .footer {
   background: var(--citsa-navy);
   color: white;
@@ -935,9 +880,7 @@ button,
   opacity: 0.7;
 }
 
-/* ============================================
-   NEWSLETTER
-   ============================================ */
+/* ========== NEWSLETTER ========== */
 .newsletter {
   padding: 60px 0;
   background: linear-gradient(135deg, var(--citsa-navy), var(--citsa-navy-light));
@@ -1003,9 +946,7 @@ button,
   justify-content: center;
 }
 
-/* ============================================
-   PARTNERS
-   ============================================ */
+/* ========== PARTNERS ========== */
 .partners {
   padding: 50px 0;
   background: white;
@@ -1040,9 +981,7 @@ button,
   font-weight: 500;
 }
 
-/* ============================================
-   DIRECTOR MESSAGE
-   ============================================ */
+/* ========== DIRECTOR MESSAGE ========== */
 .director-message {
   padding: 60px 0;
   background: var(--gray-light);
@@ -1094,9 +1033,7 @@ button,
   color: var(--text-light);
 }
 
-/* ============================================
-   SOCIAL STATS
-   ============================================ */
+/* ========== SOCIAL STATS ========== */
 .social-stats {
   padding: 50px 0;
   background: var(--citsa-navy);
@@ -1138,9 +1075,7 @@ button,
   color: rgba(255,255,255,0.7);
 }
 
-/* ============================================
-   ANNOUNCEMENTS
-   ============================================ */
+/* ========== ANNOUNCEMENTS ========== */
 .announcements {
   padding: 60px 0;
   background: var(--gray-light);
@@ -1199,9 +1134,7 @@ button,
   gap: 4px;
 }
 
-/* ============================================
-   REGISTRATION FORM
-   ============================================ */
+/* ========== REGISTRATION FORM ========== */
 .registration-page {
   min-height: 100vh;
   background: linear-gradient(135deg, var(--citsa-navy), var(--citsa-navy-light));
@@ -1370,9 +1303,7 @@ button,
   color: white;
 }
 
-/* ============================================
-   SUCCESS PAGE
-   ============================================ */
+/* ========== SUCCESS PAGE ========== */
 .success-page {
   min-height: 100vh;
   background: linear-gradient(135deg, var(--citsa-navy), var(--citsa-navy-light));
@@ -1426,9 +1357,7 @@ button,
   margin-top: 10px;
 }
 
-/* ============================================
-   STUDENT PORTAL
-   ============================================ */
+/* ========== STUDENT PORTAL ========== */
 .student-portal,
 .student-portal-dashboard {
   min-height: 100vh;
@@ -1625,9 +1554,7 @@ button,
   margin-top: 1rem;
 }
 
-/* ============================================
-   ADMIN LOGIN
-   ============================================ */
+/* ========== ADMIN LOGIN ========== */
 .admin-login-page {
   min-height: 100vh;
   background: linear-gradient(135deg, var(--citsa-navy), var(--citsa-navy-light));
@@ -1709,9 +1636,7 @@ button,
   gap: 8px;
 }
 
-/* ============================================
-   ADMIN PANEL
-   ============================================ */
+/* ========== ADMIN PANEL ========== */
 .admin-panel {
   display: flex;
   min-height: 100vh;
@@ -1769,9 +1694,7 @@ button,
   font-weight: 600;
 }
 
-/* ============================================
-   MOBILE MENU
-   ============================================ */
+/* ========== MOBILE MENU ========== */
 .navbar {
   position: fixed;
   top: 0;
@@ -1843,9 +1766,7 @@ button,
   }
 }
 
-/* ============================================
-   UTILITIES
-   ============================================ */
+/* ========== ANIMATIONS ========== */
 .spinning {
   animation: spin 1s linear infinite;
 }
