@@ -9,6 +9,7 @@ import axios from 'axios'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 import { API_URL } from '../config'
+import BackToHome from './BackToHome'
 
 const StudentPortal = ({ onBack }) => {
   const [registrationId, setRegistrationId] = useState('')
@@ -1013,6 +1014,7 @@ const StudentPortal = ({ onBack }) => {
 
   return (
    <div className="student-portal" style={{ background: '#0f172a', color: '#f1f5f9' }}>
+      <BackToHome onBack={onBack} />   {/* <-- ADD THIS LINE */}
       <div className="container">
         <div className="portal-card">
           <div className="portal-icon">🎓</div>
