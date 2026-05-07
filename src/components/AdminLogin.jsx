@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { FaUserShield, FaLock, FaSpinner, FaArrowLeft, FaEye, FaEyeSlash } from 'react-icons/fa'
+import { FaUserShield, FaLock, FaSpinner, FaEye, FaEyeSlash } from 'react-icons/fa'
 import { API_URL } from '../config'
 
 const AdminLogin = () => {
@@ -31,11 +31,6 @@ const AdminLogin = () => {
 
   return (
     <div className="admin-login-page">
-      {/* Back button - simple and clean */}
-      <button onClick={() => navigate('/')} className="global-back-btn">
-        <FaArrowLeft /> Back
-      </button>
-
       <div className="login-container">
         <div className="login-card">
           <div className="login-icon"><FaUserShield /></div>
@@ -67,7 +62,7 @@ const AdminLogin = () => {
               />
               <button 
                 type="button"
-                className="password-toggle-btn"
+                className="password-toggle"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -75,7 +70,7 @@ const AdminLogin = () => {
             </div>
             
             <button type="submit" disabled={loading}>
-              {loading ? <><FaSpinner className="spinning" /> Logging in...</> : 'Login'}
+              {loading ? <FaSpinner className="spinning" /> : 'Login'}
             </button>
           </form>
           
@@ -85,72 +80,51 @@ const AdminLogin = () => {
         </div>
       </div>
 
+      {/* Simple back button at bottom */}
+      <button onClick={() => navigate('/')} className="back-home-link">
+        ← Back to Home
+      </button>
+
       <style>{`
         .admin-login-page {
           min-height: 100vh;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #0a192f, #112240);
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
           padding: 20px;
           position: relative;
         }
         
-        /* Global back button - clean and simple */
-        .global-back-btn {
-          position: fixed;
-          top: 20px;
-          left: 20px;
-          background: rgba(255, 255, 255, 0.2);
- backdrop-filter: blur(10px);
-          border: none;
-          padding: 10px 18px;
-          border-radius: 40px;
-          font-size: 0.9rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          color: white;
-          font-weight: 500;
-          transition: all 0.3s;
-          z-index: 100;
-        }
-        
-        .global-back-btn:hover {
-          background: rgba(255, 255, 255, 0.3);
-          transform: translateX(-3px);
-        }
-        
         .login-container { 
           width: 100%; 
-          max-width: 420px; 
+          max-width: 400px; 
         }
         
         .login-card {
           background: white;
-          border-radius: 24px;
+          border-radius: 20px;
           padding: 2rem;
           text-align: center;
-          box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         
         body.dark .login-card { 
-          background: #1e293b; 
+          background: #1a365d; 
           color: white; 
         }
         
         .login-icon { 
           font-size: 3rem; 
           color: #f5a623; 
-          margin-bottom: 0.75rem;
+          margin-bottom: 1rem; 
         }
         
         .login-card h1 { 
           margin-bottom: 0.5rem; 
-          color: #0f172a;
+          color: #0a192f;
           font-size: 1.6rem;
-          font-weight: 700;
         }
         
         body.dark .login-card h1 { 
@@ -168,17 +142,12 @@ const AdminLogin = () => {
         }
         
         .error-message { 
-          background: #fee2e2; 
-          color: #dc2626; 
+          background: #ffebee; 
+          color: #c62828; 
           padding: 10px; 
           border-radius: 10px; 
           margin: 1rem 0;
-          font-size: 0.8rem;
-        }
-        
-        body.dark .error-message {
-          background: rgba(239, 68, 68, 0.15);
-          color: #f87171;
+          font-size: 0.85rem;
         }
         
         .input-group { 
@@ -188,59 +157,50 @@ const AdminLogin = () => {
         
         .input-icon { 
           position: absolute; 
-          left: 14px; 
+          left: 12px; 
           top: 50%; 
           transform: translateY(-50%); 
-          color: #94a3b8; 
+          color: #999; 
           font-size: 0.9rem;
-          z-index: 1;
         }
         
         .input-group input {
           width: 100%;
-          padding: 12px 14px 12px 42px;
+          padding: 12px 12px 12px 38px;
           border: 1px solid #e2e8f0;
-          border-radius: 12px;
+          border-radius: 10px;
           font-size: 0.9rem;
           background: white;
-          transition: all 0.2s;
         }
         
         .input-group input:focus {
           outline: none;
           border-color: #f5a623;
-          box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.1);
         }
         
         body.dark .input-group input { 
-          background: #0f172a; 
+          background: #0a192f; 
           border-color: #334155; 
           color: white; 
         }
         
-        /* Password toggle button */
-        .password-toggle-btn {
+        .password-toggle {
           position: absolute;
-          right: 14px;
+          right: 12px;
           top: 50%;
           transform: translateY(-50%);
           background: none;
           border: none;
           cursor: pointer;
-          color: #94a3b8;
+          color: #999;
           font-size: 1rem;
-          padding: 0;
           width: auto;
-          min-width: auto;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          padding: 0;
         }
         
-        .password-toggle-btn:hover {
+        .password-toggle:hover {
           color: #f5a623;
           background: none;
-          transform: translateY(-50%);
         }
         
         button[type="submit"] {
@@ -248,17 +208,15 @@ const AdminLogin = () => {
           background: linear-gradient(135deg, #f5a623, #e69500);
           border: none;
           padding: 12px;
-          border-radius: 12px;
+          border-radius: 10px;
           color: white;
           font-weight: 600;
-          font-size: 0.9rem;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: all 0.3s;
         }
         
         button[type="submit"]:hover:not(:disabled) { 
-          transform: translateY(-1px);
-          box-shadow: 0 8px 16px -4px rgba(245, 166, 35, 0.3);
+          transform: translateY(-2px); 
         }
         
         button[type="submit"]:disabled { 
@@ -279,16 +237,31 @@ const AdminLogin = () => {
           padding-top: 1rem; 
           border-top: 1px solid #e2e8f0; 
           font-size: 0.75rem;
-          color: #64748b;
         }
         
         body.dark .login-info {
           border-top-color: #334155;
-          color: #94a3b8;
         }
         
         .login-info strong {
           color: #f5a623;
+        }
+        
+        .back-home-link {
+          margin-top: 20px;
+          background: transparent;
+          border: none;
+          color: white;
+          cursor: pointer;
+          font-size: 0.85rem;
+          padding: 8px 16px;
+          border-radius: 20px;
+          transition: all 0.3s;
+          width: auto;
+        }
+        
+        .back-home-link:hover {
+          background: rgba(255,255,255,0.1);
         }
         
         @media (max-width: 480px) { 
@@ -297,15 +270,6 @@ const AdminLogin = () => {
           }
           .login-card h1 {
             font-size: 1.4rem;
-          }
-          .global-back-btn {
-            top: 10px;
-            left: 10px;
-            padding: 6px 12px;
-            font-size: 0.8rem;
-          }
-          .login-icon {
-            font-size: 2.5rem;
           }
         }
       `}</style>
