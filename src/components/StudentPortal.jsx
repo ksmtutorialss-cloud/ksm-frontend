@@ -476,7 +476,7 @@ const StudentPortal = ({ onBack }) => {
     const isCertificateAvailable = student.certificate_released === true && student.payment_status === 'paid'
 
     return (
-      <div className="student-portal-dashboard">
+      <div className="student-portal-dashboard" style={{ background: '#0f172a', color: '#f1f5f9' }}>
         <div className="container">
           <div className="dashboard-card">
             <div className="dashboard-header">
