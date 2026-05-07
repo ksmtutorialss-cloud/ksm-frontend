@@ -836,7 +836,7 @@ const AdminPanel = () => {
 
   return (
     return (
-        <div style={{ display: 'flex', minHeight: '100vh', background: '#0f172a', color: '#f1f5f9', fontFamily: 'Inter, sans-serif' }}>
+      <div style={{ display: 'flex', minHeight: '100vh', background: '#f0f2f5', fontFamily: 'Inter, sans-serif' }}>
       
       {toast && (
         <div style={{
