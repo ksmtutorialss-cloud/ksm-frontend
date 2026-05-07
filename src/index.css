@@ -2576,15 +2576,53 @@ body.dark .empty-state {
 
 /* ====================  ====================  ====================  ====================  ==================== */
 
+/* ============================================
+   FORCE ADMIN PANEL TEXT TO BE DARK/BLACK IN LIGHT MODE
+   ============================================ */
 
-/* FORCE all admin panel text in light mode to be dark */
-@media (prefers-color-scheme: light) {
-  .admin-panel,
-  .admin-panel *,
-  .main-content,
-  .main-content * {
-    color: #1e293b !important;
-  }
+/* Force ALL text in admin panel to be dark/black when NOT in dark mode */
+body:not(.dark) .admin-panel,
+body:not(.dark) .admin-panel *,
+body:not(.dark) .main-content,
+body:not(.dark) .main-content * {
+  color: #1a1a1a !important;
+}
+
+/* Make headings even darker */
+body:not(.dark) .admin-panel h1,
+body:not(.dark) .admin-panel h2,
+body:not(.dark) .admin-panel h3,
+body:not(.dark) .admin-panel h4,
+body:not(.dark) .admin-panel .stat-card h3,
+body:not(.dark) .dashboard-stats > div h3 {
+  color: #000000 !important;
+}
+
+/* Make table text pure black */
+body:not(.dark) table td,
+body:not(.dark) table th,
+body:not(.dark) .admin-table td,
+body:not(.dark) .admin-table th,
+body:not(.dark) .data-table td,
+body:not(.dark) .data-table th {
+  color: #1a1a1a !important;
+}
+
+/* Make sure links are visible */
+body:not(.dark) .admin-panel a {
+  color: #0a192f !important;
+}
+
+/* Make sure labels are dark */
+body:not(.dark) .admin-panel label,
+body:not(.dark) .admin-panel .form-label {
+  color: #1a1a1a !important;
+}
+
+/* Make sure placeholder text is visible but lighter */
+body:not(.dark) .admin-panel input::placeholder,
+body:not(.dark) .admin-panel textarea::placeholder {
+  color: #666666 !important;
 }
 
 /* Override any inline styles that might be forcing light text */
