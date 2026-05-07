@@ -4,18 +4,27 @@ import axios from 'axios'
 import { API_URL } from '../config'
 
 const HeroSection = ({ onRegister, onlineCount }) => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-  const [deadline, setDeadline] = useState('2026-05-30T23:59:00')
+  const [timeLeft, setTimeLeft] = useState(null)
+  const [deadline, setDeadline] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     axios.get(`${API_URL}/api/settings`)
       .then(res => {
-        if (res.data.deadline) setDeadline(res.data.deadline)
+        if (res.data.deadline) {
+          setDeadline(res.data.deadline)
+        }
+        setLoading(false)
       })
-      .catch(err => console.error('Error:', err))
+      .catch(err => {
+        console.error('Error:', err)
+        setLoading(false)
+      })
   }, [])
 
   useEffect(() => {
+    if (!deadline) return
+    
     const timer = setInterval(() => {
       const now = new Date().getTime()
       const target = new Date(deadline).getTime()
@@ -56,10 +65,10 @@ const HeroSection = ({ onRegister, onlineCount }) => {
           <div className="deadline-card">
             <h4>⏰ Registration Closes In</h4>
             <div className="countdown">
-              <div className="countdown-item"><span>{timeLeft.days}</span><small>Days</small></div>
-              <div className="countdown-item"><span>{String(timeLeft.hours).padStart(2, '0')}</span><small>Hours</small></div>
-              <div className="countdown-item"><span>{String(timeLeft.minutes).padStart(2, '0')}</span><small>Mins</small></div>
-              <div className="countdown-item"><span>{String(timeLeft.seconds).padStart(2, '0')}</span><small>Secs</small></div>
+              <div className="countdown-item"><span>{loading ? '--' : (timeLeft?.days ?? 0)}</span><small>Days</small></div>
+              <div className="countdown-item"><span>{loading ? '--' : String(timeLeft?.hours ?? 0).padStart(2, '0')}</span><small>Hours</small></div>
+              <div className="countdown-item"><span>{loading ? '--' : String(timeLeft?.minutes ?? 0).padStart(2, '0')}</span><small>Mins</small></div>
+              <div className="countdown-item"><span>{loading ? '--' : String(timeLeft?.seconds ?? 0).padStart(2, '0')}</span><small>Secs</small></div>
             </div>
             <div className="deadline-features">
               <div className="feature"> No upfront payment</div>
@@ -281,6 +290,7 @@ const HeroSection = ({ onRegister, onlineCount }) => {
           .hero-container {
             grid-template-columns: 1fr;
             text-align: center;
+            padding: 2rem 1rem;
           }
           
           .hero-title {
@@ -298,7 +308,7 @@ const HeroSection = ({ onRegister, onlineCount }) => {
         
         @media (max-width: 480px) {
           .hero-container {
-            padding: 2rem 1rem;
+            padding: 1.5rem 1rem;
           }
           
           .countdown-item {
