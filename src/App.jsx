@@ -23,35 +23,13 @@ import { API_URL } from './config'
 import './App.css'
 
 function App() {
-  const [showRegister, setShowRegister] = useState(false)
-  const [showPortal, setShowPortal] = useState(false)
   const [registrationClosed, setRegistrationClosed] = useState(false)
   const [deadline, setDeadline] = useState(null)
   const { onlineCount, socket } = useSocket()
   const navigate = useNavigate()
   const location = useLocation()
 
-  useEffect(() => {
-    const currentView = localStorage.getItem('current_view')
-    if (currentView === 'student_portal' && !showPortal && location.pathname === '/') {
-      setShowPortal(true)
-    } else if (currentView === 'registration' && !showRegister && location.pathname === '/') {
-      setShowRegister(true)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (showPortal) {
-      localStorage.setItem('current_view', 'student_portal')
-    } else if (showRegister) {
-      localStorage.setItem('current_view', 'registration')
-    } else if (location.pathname === '/admin/dashboard') {
-      localStorage.setItem('current_view', 'admin_panel')
-    } else if (location.pathname === '/') {
-      localStorage.setItem('current_view', 'homepage')
-    }
-  }, [showPortal, showRegister, location.pathname])
-
+  // Check registration deadline
   useEffect(() => {
     const fetchSettings = async () => {
       try {
@@ -72,49 +50,35 @@ function App() {
     fetchSettings()
   }, [])
 
-  const handleNavigateHome = () => {
-    setShowRegister(false)
-    setShowPortal(false)
-    localStorage.setItem('current_view', 'homepage')
-    if (location.pathname !== '/') {
-      navigate('/')
-    }
-  }
-
-  if (showRegister) {
-    if (registrationClosed) {
-      return (
-        <div className="registration-closed">
-          <BackToHome onBack={handleNavigateHome} />
-          <div className="container">
-            <div className="closed-card">
-              <h2>🔒 Registration Closed</h2>
-              <p>The registration deadline has passed. Please contact admin for assistance.</p>
-              <button className="btn-primary" onClick={handleNavigateHome}>Back to Home</button>
-            </div>
+  // Handle registration closed page
+  if (location.pathname === '/register' && registrationClosed) {
+    return (
+      <div className="registration-closed">
+        <BackToHome onBack={() => navigate('/')} />
+        <div className="container">
+          <div className="closed-card">
+            <h2>🔒 Registration Closed</h2>
+            <p>The registration deadline has passed. Please contact admin for assistance.</p>
+            <button className="btn-primary" onClick={() => navigate('/')}>Back to Home</button>
           </div>
         </div>
-      )
-    }
-    return <RegistrationForm onBack={handleNavigateHome} deadline={deadline} />
-  }
-
-  if (showPortal) {
-    return <StudentPortal onBack={handleNavigateHome} />
+      </div>
+    )
   }
 
   return (
     <Routes>
+      {/* Homepage */}
       <Route path="/" element={
         <div className="app">
           <Navbar 
-            onRegister={() => setShowRegister(true)} 
-            onPortal={() => setShowPortal(true)} 
-            onHome={handleNavigateHome}
+            onRegister={() => navigate('/register')} 
+            onPortal={() => navigate('/portal')} 
+            onHome={() => navigate('/')}
           />
-          <HeroSection onRegister={() => setShowRegister(true)} onlineCount={onlineCount} />
+          <HeroSection onRegister={() => navigate('/register')} onlineCount={onlineCount} />
           <SocialStats />
-          <CourseSection onRegister={() => setShowRegister(true)} />
+          <CourseSection onRegister={() => navigate('/register')} />
           <DirectorMessage />
           <MeetTutors />
           <Announcements />
@@ -125,6 +89,14 @@ function App() {
           <Footer />
         </div>
       } />
+      
+      {/* Registration */}
+      <Route path="/register" element={<RegistrationForm onBack={() => navigate('/')} deadline={deadline} />} />
+      
+      {/* Student Portal */}
+      <Route path="/portal" element={<StudentPortal onBack={() => navigate('/')} />} />
+      
+      {/* Admin */}
       <Route path="/admin" element={<AdminLogin />} />
       <Route path="/admin/dashboard" element={<AdminPanel />} />
     </Routes>
