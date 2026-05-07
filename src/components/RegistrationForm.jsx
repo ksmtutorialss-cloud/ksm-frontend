@@ -287,7 +287,7 @@ const RegistrationForm = ({ onBack, deadline }) => {
             <div className="whatsapp-box">
               <div className="whatsapp-icon">💬</div>
               <h3>Join Our WhatsApp Group!</h3>
-              <p>A WhatsApp group invite link has been sent to <strong>{formData.phone}</strong></p>
+              <p>The WhatsApp group invite link has been sent to your <strong>email address</strong>. Please check your inbox (and spam folder).</p>
               <p className="warning">⚠️ ALL tutorial dates and venues will be announced in the WhatsApp group only!</p>
               <button 
                 className="whatsapp-btn" 
