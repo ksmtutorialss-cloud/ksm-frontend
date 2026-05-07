@@ -1818,81 +1818,55 @@ body.dark .success-details { background: #0f172a; }
 
 
 
+/* =====================================================
+   FORCE DARK MODE FOR INLINE-STYLED ADMIN PANEL ELEMENTS
+   ===================================================== */
 
-
-
-/* ============================================
-   DARK MODE FIXES: ADMIN PANEL SPECIFIC ELEMENTS
-   ============================================ */
-
-/* 1. Fix payment status badges in dark mode (Certificates & Students tables) */
-body.dark .status-badge,
-body.dark .payment-status,
+/* 1. Payment status badges in Students & Certificates tables */
 body.dark td span[style*="background: #e8f5e9"],
 body.dark td span[style*="background: #fff3e0"],
-body.dark .admin-table .badge-success,
-body.dark .admin-table .badge-warning,
-body.dark table .badge-success,
-body.dark table .badge-warning {
-  background-color: transparent !important;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: 600;
-}
-
-/* Paid status - green background with dark green text in dark mode? Actually we want light text on dark green */
-body.dark td span[style*="background: #e8f5e9"],
-body.dark .status-badge.paid,
-body.dark .badge-success {
+body.dark .admin-table td span[style*="background: #e8f5e9"],
+body.dark .admin-table td span[style*="background: #fff3e0"],
+body.dark .data-table td span[style*="background: #e8f5e9"],
+body.dark .data-table td span[style*="background: #fff3e0"] {
   background-color: rgba(16, 185, 129, 0.2) !important;
   color: #34d399 !important;
   border: 1px solid #34d399 !important;
+  border-radius: 20px !important;
+  padding: 4px 12px !important;
 }
 
-/* Pending status - orange background with light orange text */
-body.dark td span[style*="background: #fff3e0"],
-body.dark .status-badge.pending,
-body.dark .badge-warning {
-  background-color: rgba(245, 158, 11, 0.2) !important;
-  color: #fbbf24 !important;
-  border: 1px solid #fbbf24 !important;
-}
-
-/* 2. Fix status badges in edit requests tab */
-body.dark .edit-requests-status,
-body.dark td span[style*="background: #fff3e0"],
-body.dark td span[style*="background: #e8f5e9"],
-body.dark td span[style*="background: #ffebee"] {
-  background-color: transparent !important;
-}
-
-/* Pending edit request */
+/* For pending status */
 body.dark td span[style*="background: #fff3e0"] {
   background-color: rgba(245, 158, 11, 0.2) !important;
   color: #fbbf24 !important;
+  border-color: #fbbf24 !important;
+}
+
+/* 2. Edit request status badges */
+body.dark td span[style*="background: #fff3e0"][style*="color: #ef6c00"] {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+  color: #fbbf24 !important;
   border: 1px solid #fbbf24 !important;
 }
 
-/* Approved edit request */
-body.dark td span[style*="background: #e8f5e9"] {
+body.dark td span[style*="background: #e8f5e9"][style*="color: #2e7d32"] {
   background-color: rgba(16, 185, 129, 0.2) !important;
   color: #34d399 !important;
   border: 1px solid #34d399 !important;
 }
 
-/* Rejected edit request */
-body.dark td span[style*="background: #ffebee"] {
+body.dark td span[style*="background: #ffebee"][style*="color: #c62828"] {
   background-color: rgba(239, 68, 68, 0.2) !important;
   color: #f87171 !important;
   border: 1px solid #f87171 !important;
 }
 
-/* 3. Fix "View Changes" modal in dark mode - all text should be light */
+/* 3. "View Changes" modal – all backgrounds and text */
 body.dark .modal-content,
-body.dark .edit-request-modal,
-body.dark [style*="background: #f8f9fa"],
-body.dark [style*="background: #fff3e0"],
-body.dark [style*="background: #e8f5e9"] {
+body.dark .modal-content div[style*="background: #f8f9fa"],
+body.dark .modal-content div[style*="background: #fff3e0"],
+body.dark .modal-content div[style*="background: #e8f5e9"] {
   background-color: #1e293b !important;
   color: #f1f5f9 !important;
 }
@@ -1906,26 +1880,30 @@ body.dark .modal-content li {
   color: #f1f5f9 !important;
 }
 
-/* Fix the "Current Data" and "Requested Changes" boxes inside modal */
-body.dark .modal-content div[style*="background: #f8f9fa"],
-body.dark .modal-content div[style*="background: #fff3e0"],
-body.dark .modal-content div[style*="background: #e8f5e9"] {
-  background-color: #0f172a !important;
-  border: 1px solid #334155 !important;
+/* Override specific text colors in the modal */
+body.dark .modal-content h4[style*="color: #0a192f"] {
+  color: #f5a623 !important;
 }
 
-body.dark .modal-content h4[style*="color: #0a192f"],
 body.dark .modal-content h4[style*="color: #f5a623"] {
   color: #f5a623 !important;
 }
 
-/* Fix the summary of changes section */
+body.dark .modal-content p[style*="color: #666"] {
+  color: #94a3b8 !important;
+}
+
+body.dark .modal-content span[style*="color: #999"] {
+  color: #94a3b8 !important;
+}
+
+/* Summary of changes box */
 body.dark .modal-content div[style*="background: #e8f5e9"] {
   background-color: #0f172a !important;
   border: 1px solid #10b981 !important;
 }
 
-body.dark .modal-content div[style*="background: #e8f5e9"] h4 {
+body.dark .modal-content div[style*="background: #e8f5e9"] h4[style*="color: #2e7d32"] {
   color: #34d399 !important;
 }
 
@@ -1937,35 +1915,27 @@ body.dark .modal-content ul li span[style*="color: #2e7d32"] {
   color: #34d399 !important;
 }
 
-/* Fix modal buttons */
+/* Modal buttons */
 body.dark .modal-content button[style*="background: #ddd"] {
-  background-color: #334155 !important;
+  background: #334155 !important;
   color: white !important;
 }
 
 body.dark .modal-content button[style*="background: #10b981"] {
-  background-color: #10b981 !important;
+  background: #10b981 !important;
   color: white !important;
 }
 
 body.dark .modal-content button[style*="background: #ef4444"] {
-  background-color: #ef4444 !important;
+  background: #ef4444 !important;
   color: white !important;
 }
 
-/* 4. General table cell text in dark mode - ensure visibility */
-body.dark td,
-body.dark th,
+/* 4. Any remaining table text in dark mode */
 body.dark .admin-table td,
 body.dark .admin-table th,
-body.dark .data-table td,
-body.dark .data-table th {
-  color: #f1f5f9 !important;
-}
-
-/* 5. Ensure payment status text in certificates table is visible */
-body.dark .certificate-status,
-body.dark td span:not(.badge):not(.status-badge) {
+body.dark table td,
+body.dark table th {
   color: #f1f5f9 !important;
 }
 
