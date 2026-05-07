@@ -237,6 +237,19 @@ const RegistrationForm = ({ onBack, deadline }) => {
               <strong>Check your email!</strong> A confirmation email with your Registration ID and login credentials has been sent to <strong>{registrationData.email}</strong>
             </div>
             
+            {/* Spam notice */}
+            <div className="spam-notice" style={{
+              background: '#fff3e0',
+              padding: '12px',
+              borderRadius: '10px',
+              margin: '15px 0',
+              fontSize: '0.85rem',
+              textAlign: 'center'
+            }}>
+              📧 <strong>Didn't receive the email?</strong> Please check your <strong>Spam/Junk folder</strong>. 
+              If not found, contact us at <strong>ksm.tutorials@ucc.edu.gh</strong>.
+            </div>
+            
             <p className="info-note">📋 You can download your receipt from the Student Portal after payment is confirmed.</p>
             
             <div className="success-details">
