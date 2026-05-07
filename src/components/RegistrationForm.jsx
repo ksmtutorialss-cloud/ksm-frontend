@@ -258,10 +258,10 @@ const RegistrationForm = ({ onBack, deadline }) => {
             <h1>Registration Successful!</h1>
             <p>Congratulations {registrationData.full_name}!</p>
             
-            <div className="email-notice">
+            <div className="email-notice" style={{ textAlign: 'left' }}>
               <FaEnvelope style={{ marginRight: '8px' }} />
               <strong>Check your email!</strong> A confirmation email with your Registration ID and login credentials has been sent to <strong>{registrationData.email}</strong>
-              <br></br>
+              <br />
               📧 <strong>Didn't receive the email?</strong> Please check your <strong>Spam/Junk folder</strong>. If not found, contact us at <strong>ksm.tutorials@ucc.edu.gh</strong>.
             </div>
             
