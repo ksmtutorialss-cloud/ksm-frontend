@@ -1064,3 +1064,328 @@ body.dark .modal-content button[onClick] {
 body.dark .modal-content button[onClick]:hover {
   color: var(--citsa-gold) !important;
 }
+
+
+
+
+/* ============================================
+   COMPLETE DARK MODE - EVERY SECTION COVERED
+   ============================================ */
+
+/* 1. ADMIN PANEL - Sidebar and Main Content */
+body.dark .admin-sidebar,
+body.dark [style*="background: linear-gradient(180deg, #0a192f"] {
+  background: linear-gradient(180deg, #0a192f 0%, #0d2137 100%) !important;
+}
+
+body.dark .main-content,
+body.dark [style*="background: #f0f2f5"] {
+  background: #0f172a !important;
+}
+
+/* 2. ADMIN STAT CARDS */
+body.dark .dashboard-stats > div,
+body.dark [style*="background: white"][style*="box-shadow"],
+body.dark .stat-card,
+body.dark .admin-stat-card {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* 3. ADMIN TABLES */
+body.dark .admin-table,
+body.dark .data-table,
+body.dark table {
+  background: transparent !important;
+}
+
+body.dark th {
+  background: #0f172a !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark td {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+
+/* 4. ADMIN FILTERS AND SEARCH */
+body.dark .filters-bar input,
+body.dark .filters-bar select,
+body.dark .search-box input {
+  background: #0f172a !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+
+/* 5. STUDENT PORTAL - All Cards */
+body.dark .student-portal-dashboard,
+body.dark .student-portal,
+body.dark .dashboard-card,
+body.dark .portal-card,
+body.dark .info-card,
+body.dark .ticket-item,
+body.dark .contact-card,
+body.dark .security-card,
+body.dark .edit-form,
+body.dark .new-ticket-form,
+body.dark .tickets-list {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* 6. STUDENT PORTAL - Headers and Text */
+body.dark .dashboard-card h2,
+body.dark .dashboard-card h3,
+body.dark .dashboard-card p,
+body.dark .info-card h3,
+body.dark .info-card div,
+body.dark .info-card strong,
+body.dark .ticket-item strong,
+body.dark .ticket-item p,
+body.dark .contact-card h3,
+body.dark .security-card h3 {
+  color: #f1f5f9 !important;
+}
+
+/* 7. REGISTRATION FORM */
+body.dark .registration-page,
+body.dark .form-card,
+body.dark .summary-box,
+body.dark .info-box,
+body.dark .step-indicators span {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .form-card h2,
+body.dark .form-card p,
+body.dark .form-card label,
+body.dark .summary-box p,
+body.dark .info-box p,
+body.dark .info-box li {
+  color: #f1f5f9 !important;
+}
+
+/* 8. COURSE SECTION */
+body.dark .courses,
+body.dark .course-card {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .course-card .course-title,
+body.dark .course-card .course-description,
+body.dark .course-card .course-instructor {
+  color: #f1f5f9 !important;
+}
+
+/* 9. TUTORS SECTION */
+body.dark .meet-tutors,
+body.dark .tutor-card {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .tutor-card .tutor-name,
+body.dark .tutor-card .tutor-specialization,
+body.dark .tutor-card .tutor-experience {
+  color: #f1f5f9 !important;
+}
+
+/* 10. COMMENTS SECTION */
+body.dark .comments,
+body.dark .comment-item,
+body.dark .comment-form-container {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .comment-user,
+body.dark .comment-text,
+body.dark .comment-date {
+  color: #f1f5f9 !important;
+}
+
+/* 11. FAQ SECTION */
+body.dark .faq,
+body.dark .faq-item,
+body.dark .faq-question {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .faq-answer {
+  background: #0f172a !important;
+  color: #cbd5e1 !important;
+}
+
+/* 12. FOOTER */
+body.dark .footer {
+  background: #0a192f !important;
+}
+
+body.dark .footer-section h3,
+body.dark .footer-section p,
+body.dark .footer-section a {
+  color: #f1f5f9 !important;
+}
+
+/* 13. HERO SECTION */
+body.dark .hero {
+  background: linear-gradient(135deg, #0a192f 0%, #112240 100%) !important;
+}
+
+body.dark .hero-title,
+body.dark .hero-description,
+body.dark .hero-badge {
+  color: #f1f5f9 !important;
+}
+
+/* 14. COUNTDOWN */
+body.dark .deadline-card,
+body.dark .countdown-item {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .countdown-item span {
+  color: var(--citsa-gold) !important;
+}
+
+/* 15. NEWSLETTER */
+body.dark .newsletter {
+  background: linear-gradient(135deg, #0a192f, #112240) !important;
+}
+
+body.dark .newsletter-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 16. PARTNERS */
+body.dark .partners {
+  background: #1e293b !important;
+}
+
+/* 17. DIRECTOR MESSAGE */
+body.dark .director-message {
+  background: #1e293b !important;
+}
+
+body.dark .message-card {
+  background: #0f172a !important;
+  color: #f1f5f9 !important;
+}
+
+/* 18. SOCIAL STATS */
+body.dark .social-stats {
+  background: #0a192f !important;
+}
+
+/* 19. MODALS */
+body.dark .modal-content,
+body.dark [style*="position: fixed"][style*="background: white"] {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .modal-content h2,
+body.dark .modal-content h3,
+body.dark .modal-content h4,
+body.dark .modal-content p {
+  color: #f1f5f9 !important;
+}
+
+/* 20. CONFIRM MODAL */
+body.dark .confirm-modal,
+body.dark [style*="background: white"][style*="border-radius: 20px"] {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* 21. ALL BUTTONS IN DARK MODE */
+body.dark button,
+body.dark .btn,
+body.dark .edit-btn,
+body.dark .delete-btn,
+body.dark .save-btn,
+body.dark .cancel-btn,
+body.dark .approve-btn,
+body.dark .reject-btn,
+body.dark .reply-btn,
+body.dark .submit-btn,
+body.dark .change-password-btn,
+body.dark .logout-btn,
+body.dark .back-home,
+body.dark .course-btn,
+body.dark .level-tab {
+  background: #334155 !important;
+  color: #f1f5f9 !important;
+  border: none !important;
+}
+
+/* Primary/Gold buttons */
+body.dark .btn-primary,
+body.dark .hero-btn-primary,
+body.dark .login-btn,
+body.dark .register-btn,
+body.dark .submit-btn[type="submit"],
+body.dark .change-password-btn,
+body.dark button[style*="background: #f5a623"],
+body.dark button[style*="background: linear-gradient"],
+body.dark .level-tab.active {
+  background: var(--citsa-gold) !important;
+  color: #0a192f !important;
+}
+
+/* Active tabs */
+body.dark .tab-btn.active,
+body.dark .portal-tabs .tab-btn.active {
+  background: var(--citsa-gold) !important;
+  color: #0a192f !important;
+}
+
+/* 22. ALL INPUT FIELDS */
+body.dark input,
+body.dark textarea,
+body.dark select,
+body.dark .form-group input,
+body.dark .form-group select,
+body.dark .form-group textarea {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+/* 23. ALL LINKS */
+body.dark a:not(.btn-primary):not(.btn-secondary) {
+  color: var(--citsa-gold) !important;
+}
+
+/* 24. NAVBAR */
+body.dark .navbar {
+  background: rgba(10, 25, 47, 0.98) !important;
+}
+
+body.dark .navbar a,
+body.dark .navbar span,
+body.dark .navbar button {
+  color: #f1f5f9 !important;
+}
+
+/* 25. SIDEBAR IN ADMIN */
+body.dark .sidebar,
+body.dark [style*="background: linear-gradient(180deg, #0a192f"] {
+  background: linear-gradient(180deg, #0a192f 0%, #0d2137 100%) !important;
+}
+
+body.dark .sidebar button,
+body.dark .sidebar span {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark .sidebar button:hover {
+  background: rgba(245, 166, 35, 0.2) !important;
+  color: var(--citsa-gold) !important;
+}
