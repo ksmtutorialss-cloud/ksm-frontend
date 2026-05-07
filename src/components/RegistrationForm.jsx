@@ -292,7 +292,15 @@ const RegistrationForm = ({ onBack, deadline }) => {
               <button 
                 className="whatsapp-btn" 
                 onClick={joinWhatsApp}
-                style={{ color: '#000000', background: 'white' }}
+                style={{ 
+                  color: '#000000 !important', 
+                  backgroundColor: '#ffffff !important',
+                  border: 'none',
+                  padding: '10px 24px',
+                  borderRadius: '40px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
               >
                 Join WhatsApp Group →
               </button>
