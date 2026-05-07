@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { FaUserShield, FaLock, FaSpinner, FaArrowLeft } from 'react-icons/fa'
+import { FaUserShield, FaLock, FaSpinner, FaArrowLeft, FaEye, FaEyeSlash } from 'react-icons/fa'
 import { API_URL } from '../config'
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -30,15 +31,19 @@ const AdminLogin = () => {
 
   return (
     <div className="admin-login-page">
+      {/* Back button - simple and clean */}
+      <button onClick={() => navigate('/')} className="global-back-btn">
+        <FaArrowLeft /> Back
+      </button>
+
       <div className="login-container">
         <div className="login-card">
-          <button onClick={() => navigate('/')} className="back-home-btn">
-            <FaArrowLeft /> Back
-          </button>
           <div className="login-icon"><FaUserShield /></div>
           <h1>Admin Login</h1>
           <p>Enter your credentials to access the dashboard</p>
+          
           {error && <div className="error-message">{error}</div>}
+          
           <form onSubmit={handleSubmit}>
             <div className="input-group">
               <FaUserShield className="input-icon" />
@@ -50,20 +55,30 @@ const AdminLogin = () => {
                 required 
               />
             </div>
+            
             <div className="input-group">
               <FaLock className="input-icon" />
               <input 
-                type="password" 
+                type={showPassword ? 'text' : 'password'}
                 placeholder="Password" 
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} 
                 required 
               />
+              <button 
+                type="button"
+                className="password-toggle-btn"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
             </div>
+            
             <button type="submit" disabled={loading}>
               {loading ? <><FaSpinner className="spinning" /> Logging in...</> : 'Login'}
             </button>
           </form>
+          
           <div className="login-info">
             <p>Default: <strong>admin</strong> / <strong>admin123</strong></p>
           </div>
@@ -78,6 +93,33 @@ const AdminLogin = () => {
           align-items: center;
           justify-content: center;
           padding: 20px;
+          position: relative;
+        }
+        
+        /* Global back button - clean and simple */
+        .global-back-btn {
+          position: fixed;
+          top: 20px;
+          left: 20px;
+          background: rgba(255, 255, 255, 0.2);
+ backdrop-filter: blur(10px);
+          border: none;
+          padding: 10px 18px;
+          border-radius: 40px;
+          font-size: 0.9rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: white;
+          font-weight: 500;
+          transition: all 0.3s;
+          z-index: 100;
+        }
+        
+        .global-back-btn:hover {
+          background: rgba(255, 255, 255, 0.3);
+          transform: translateX(-3px);
         }
         
         .login-container { 
@@ -91,7 +133,6 @@ const AdminLogin = () => {
           padding: 2rem;
           text-align: center;
           box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-          position: relative;
         }
         
         body.dark .login-card { 
@@ -99,44 +140,10 @@ const AdminLogin = () => {
           color: white; 
         }
         
-        .back-home-btn {
-          position: absolute;
-          top: 16px;
-          left: 16px;
-          background: #f1f5f9;
-          border: none;
-          padding: 6px 12px;
-          border-radius: 20px;
-          font-size: 0.75rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          color: #475569;
-          transition: all 0.2s;
-          width: auto;
-          min-width: auto;
-        }
-        
-        body.dark .back-home-btn {
-          background: #334155;
-          color: #e2e8f0;
-        }
-        
-        .back-home-btn:hover {
-          background: #e2e8f0;
-          transform: translateX(-2px);
-        }
-        
-        body.dark .back-home-btn:hover {
-          background: #475569;
-        }
-        
         .login-icon { 
           font-size: 3rem; 
           color: #f5a623; 
           margin-bottom: 0.75rem;
-          margin-top: 0.5rem;
         }
         
         .login-card h1 { 
@@ -186,6 +193,7 @@ const AdminLogin = () => {
           transform: translateY(-50%); 
           color: #94a3b8; 
           font-size: 0.9rem;
+          z-index: 1;
         }
         
         .input-group input {
@@ -208,6 +216,31 @@ const AdminLogin = () => {
           background: #0f172a; 
           border-color: #334155; 
           color: white; 
+        }
+        
+        /* Password toggle button */
+        .password-toggle-btn {
+          position: absolute;
+          right: 14px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: #94a3b8;
+          font-size: 1rem;
+          padding: 0;
+          width: auto;
+          min-width: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .password-toggle-btn:hover {
+          color: #f5a623;
+          background: none;
+          transform: translateY(-50%);
         }
         
         button[type="submit"] {
@@ -265,11 +298,11 @@ const AdminLogin = () => {
           .login-card h1 {
             font-size: 1.4rem;
           }
-          .back-home-btn {
-            top: 12px;
-            left: 12px;
-            padding: 4px 10px;
-            font-size: 0.7rem;
+          .global-back-btn {
+            top: 10px;
+            left: 10px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
           }
           .login-icon {
             font-size: 2.5rem;
