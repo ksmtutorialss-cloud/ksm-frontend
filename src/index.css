@@ -2579,22 +2579,32 @@ body.dark .empty-state {
 /* ============================================
    FORCE ADMIN PANEL TEXT TO BE DARK/BLACK IN LIGHT MODE
    ============================================ */
+/* ============================================
+   FORCE ADMIN PANEL TEXT - PURE BLACK IN LIGHT MODE
+   ============================================ */
 
-/* Force ALL text in admin panel to be dark/black when NOT in dark mode */
+/* Force ALL text in admin panel to be PURE BLACK when in light mode */
 body:not(.dark) .admin-panel,
 body:not(.dark) .admin-panel *,
 body:not(.dark) .main-content,
-body:not(.dark) .main-content * {
-  color: #1a1a1a !important;
+body:not(.dark) .main-content *,
+body:not(.dark) [style*="background: #f0f2f5"] *,
+body:not(.dark) .dashboard-stats *,
+body:not(.dark) .admin-stat-card *,
+body:not(.dark) table *,
+body:not(.dark) .data-table *,
+body:not(.dark) .modal-content * {
+  color: #000000 !important;
 }
 
-/* Make headings even darker */
+/* Make headings pure black */
 body:not(.dark) .admin-panel h1,
 body:not(.dark) .admin-panel h2,
 body:not(.dark) .admin-panel h3,
 body:not(.dark) .admin-panel h4,
 body:not(.dark) .admin-panel .stat-card h3,
-body:not(.dark) .dashboard-stats > div h3 {
+body:not(.dark) .dashboard-stats > div h3,
+body:not(.dark) .admin-stat-card h3 {
   color: #000000 !important;
 }
 
@@ -2604,26 +2614,63 @@ body:not(.dark) table th,
 body:not(.dark) .admin-table td,
 body:not(.dark) .admin-table th,
 body:not(.dark) .data-table td,
-body:not(.dark) .data-table th {
-  color: #1a1a1a !important;
+body:not(.dark) .data-table th,
+body:not(.dark) td,
+body:not(.dark) th {
+  color: #000000 !important;
 }
 
-/* Make sure links are visible */
-body:not(.dark) .admin-panel a {
-  color: #0a192f !important;
+/* Make table span and strong pure black */
+body:not(.dark) table span,
+body:not(.dark) table strong,
+body:not(.dark) .admin-table span,
+body:not(.dark) .admin-table strong {
+  color: #000000 !important;
 }
 
-/* Make sure labels are dark */
-body:not(.dark) .admin-panel label,
-body:not(.dark) .admin-panel .form-label {
-  color: #1a1a1a !important;
+/* Make labels pure black */
+body:not(.dark) label,
+body:not(.dark) .form-label,
+body:not(.dark) .admin-form label {
+  color: #000000 !important;
 }
 
-/* Make sure placeholder text is visible but lighter */
-body:not(.dark) .admin-panel input::placeholder,
-body:not(.dark) .admin-panel textarea::placeholder {
-  color: #666666 !important;
+/* Make buttons text white (keep as is) - don't change button text color */
+body:not(.dark) .btn-primary,
+body:not(.dark) .btn-secondary,
+body:not(.dark) .hero-btn-primary,
+body:not(.dark) .hero-btn-secondary,
+body:not(.dark) .login-btn,
+body:not(.dark) .submit-btn,
+body:not(.dark) .save-btn,
+body:not(.dark) .edit-btn,
+body:not(.dark) .delete-btn,
+body:not(.dark) .change-password-btn,
+body:not(.dark) .whatsapp-btn {
+  color: white !important;
 }
+
+/* Make sidebar text white (keep as is) */
+body:not(.dark) .admin-sidebar,
+body:not(.dark) .admin-sidebar *,
+body:not(.dark) .sidebar,
+body:not(.dark) .sidebar * {
+  color: rgba(255,255,255,0.8) !important;
+}
+
+body:not(.dark) .admin-sidebar button.active,
+body:not(.dark) .sidebar button.active {
+  color: white !important;
+}
+
+/* Override any inline styles that force light text */
+body:not(.dark) [style*="color: #1e293b"],
+body:not(.dark) [style*="color: #64748b"],
+body:not(.dark) [style*="color: #94a3b8"],
+body:not(.dark) [style*="color: #f1f5f9"] {
+  color: #000000 !important;
+}
+
 
 /* Override any inline styles that might be forcing light text */
 body:not(.dark) .admin-panel,
